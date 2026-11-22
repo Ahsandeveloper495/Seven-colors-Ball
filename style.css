@@ -1,0 +1,191 @@
+
+/* ===== GLOBAL DESIGN ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #202d55, #070b18 70%);
+    overflow: hidden;
+}
+
+/* ===== HEADING ===== */
+
+h1 {
+    font-size: 45px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin-bottom: 100px;
+    background: linear-gradient(
+        90deg,
+        red, orange, yellow, lime, cyan, blue, violet
+    );
+    background-size: 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: rainbow 5s linear infinite;
+    text-shadow: 0 0 30px #ffffff30;
+}
+
+/* ===== BALL CONTAINER ===== */
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+/* ===== 3D BALLS ===== */
+
+.ball {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    position: relative;
+    animation: bounce 1.2s infinite alternate ease-in-out,
+               rotate 4s infinite linear;
+    transition: 0.4s;
+}
+
+/* Shine effect */
+
+.ball::before {
+    content: "";
+    position: absolute;
+    width: 35%;
+    height: 35%;
+    top: 12%;
+    left: 17%;
+    border-radius: 50%;
+    background: #ffffff;
+    filter: blur(5px);
+    opacity: 0.9;
+}
+
+.ball::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        #ffffff55,
+        transparent 45%,
+        #00000066
+    );
+}
+
+/* ===== SEVEN COLOURS ===== */
+
+.red {
+    background: radial-gradient(circle at 30% 25%, #ffaaaa, #ff003c 55%, #79001b);
+    box-shadow: 0 0 25px #ff003c, 0 0 60px #ff003c88;
+}
+
+.orange {
+    background: radial-gradient(circle at 30% 25%, #ffe0a3, #ff8500 55%, #813000);
+    box-shadow: 0 0 25px #ff8500, 0 0 60px #ff850088;
+    animation-delay: .15s;
+}
+
+.yellow {
+    background: radial-gradient(circle at 30% 25%, #ffffd0, #ffea00 55%, #9a8500);
+    box-shadow: 0 0 25px #ffea00, 0 0 60px #ffea0088;
+    animation-delay: .3s;
+}
+
+.green {
+    background: radial-gradient(circle at 30% 25%, #c1ffbb, #00e676 55%, #006b32);
+    box-shadow: 0 0 25px #00e676, 0 0 60px #00e67688;
+    animation-delay: .45s;
+}
+
+.blue {
+    background: radial-gradient(circle at 30% 25%, #b5e5ff, #008cff 55%, #00366f);
+    box-shadow: 0 0 25px #008cff, 0 0 60px #008cff88;
+    animation-delay: .6s;
+}
+
+.indigo {
+    background: radial-gradient(circle at 30% 25%, #c7b5ff, #5835ff 55%, #21106c);
+    box-shadow: 0 0 25px #5835ff, 0 0 60px #5835ff88;
+    animation-delay: .75s;
+}
+
+.violet {
+    background: radial-gradient(circle at 30% 25%, #ffd0ff, #d000ff 55%, #650080);
+    box-shadow: 0 0 25px #d000ff, 0 0 60px #d000ff88;
+    animation-delay: .9s;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes bounce {
+    from {
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        transform: translateY(-100px) scale(1.08);
+    }
+}
+
+@keyframes rotate {
+    from {
+        filter: brightness(1);
+    }
+
+    to {
+        filter: brightness(1.3);
+    }
+}
+
+@keyframes rainbow {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 300%;
+    }
+}
+
+/* ===== HOVER EFFECT ===== */
+
+.ball:hover {
+    transform: scale(1.4);
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 27px;
+        margin-bottom: 60px;
+    }
+
+    .container {
+        gap: 20px;
+    }
+
+    .ball {
+        width: 65px;
+        height: 65px;
+    }
+}
